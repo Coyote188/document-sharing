@@ -1,0 +1,28 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="userDocList" title="Member documents and point list" border="normal" width="300px">
+	
+		<grid id="grdUserList" mold="paging" pageSize="10">
+			<columns>
+				<column label="用户" width="40%" align="center"/>
+				<column label="文档" width="20%" sort="auto" align="center"/>
+				<column label="积分" width="20%" sort="auto" align="center"/>
+				<column label="" width="20%" />
+			</columns>
+<!--			<rows>-->
+<!--				<row>-->
+<!--					<div id="divRankUsername" align="left">-->
+<!--						<label id="rank" value="1" width="20%"/>-->
+<!--						<label id="userName" value="admin" width="80%"/>-->
+<!--					</div>-->
+<!--					<label id="docAmount" value="30" />-->
+<!--					<label id="point" value="500" />-->
+<!--					<div align="center">-->
+<!--						<button id="btnViewPosterDocList" label="查看"-->
+<!--							onClick="" />-->
+<!--					</div>-->
+<!--				</row>-->
+<!--			</rows>-->
+		</grid>
+	</window>
+</zk>

@@ -1,0 +1,17 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver" ?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./supportToolbar" ?>
+
+<zk>
+<toolbar align="end" id="supportToolbar" apply="${supportToolbarControl}">
+	<label id="lblWelcome" value="" />
+	<space orient="vertical"/>
+	<toolbarbutton id="btnLogin" label="登录" />
+	<toolbarbutton id="btnRegister" label="注册" />
+	<toolbarbutton id="btnLogout" label="退出" visible="false"/>
+	<separator orient="vertical" bar="true"/>
+	<toolbarbutton label="常见问题" />
+	<toolbarbutton label="帮助中心" />
+	<toolbarbutton label="关于我们" />
+</toolbar>
+</zk>

@@ -1,0 +1,15 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./documentUploadUi"?>
+
+<window id="documentUploadUi" apply="${uploadFlow}" width="400px" border="normal" title="上传" closable="true">
+	<vbox width="100%">
+
+		<fileupload id="btnUpload" label="浏览..." />
+
+		<splitter collapse="after" />
+
+		<label id="lblMessage" value="请选择一个文件..."/>
+		<div id="infoHolder"></div>
+	</vbox>
+</window>

@@ -1,0 +1,50 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./documentDetail"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<zk>
+	<vbox id="documentDetail" width="100%" height="100%" apply="${documentDetailControl}">
+	<custom-attributes document="@{documentDetail$composer.document}" uploader="@{documentDetail$composer.uploader}"/>
+		<label value="@{document.title}" />
+		<hbox>
+			<hbox>
+				<div>
+					<image id="documentImage" width="150pxpx" height="300px" content="@{document.previewPicture }"/>
+				</div>
+				<vbox >
+					<hbox>
+						<label value="简	介 ：" />
+						<label value="@{document.simpleDescription}" />
+					</hbox>
+					<hbox>
+						<label value="时  间：" />
+						<label value="@{document.uploadDate}" />
+					</hbox>
+					<hbox>
+						<label value="类 型 ："  />
+						<label value="@{document.type.name}" />
+					</hbox>
+					<hbox>
+						<label value="标 签 ：" />
+						<label value="@{document.tags}" />
+					</hbox>
+					<hbox>
+						<label value="积 分 ："  />
+						<label value="@{document.downloadCash}" />
+					</hbox>
+					<hbox>
+						<button id="btnDownload" label="download"/>
+						<button id="btnAddToCart" label="Add to cart"/>
+						<button id="btnReadOnline" label="read online"/>
+					</hbox>
+				</vbox>
+			</hbox>
+			<div>
+<!--				<image content="@{uploader.avatar}" />-->
+				<label value="@{uploader.calledName}" />
+			</div>
+		</hbox>
+		<div>
+			<label value="comment" />
+		</div>
+	</vbox>
+</zk>

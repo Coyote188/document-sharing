@@ -1,0 +1,37 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./signinUi"?>
+<zk>
+	<window id="signinUi" closable="true" title="登录"
+		border="none" width="300px" apply="${authenticateControl }">
+			<grid>
+				<columns>
+					<column label="" width="100px" />
+					<column label="" />
+				</columns>
+				<rows>
+					<row><label value="用户名" />
+						<textbox id="txtUsernate" value="@{signinUi$composer.authenticateMember.username}" width="100%"/>
+					</row>
+					<row><label value="密码 " />
+						<textbox id="txtPassword" type="password" value="@{signinUi$composer.authenticateMember.password }" width="100%"/>
+					</row>
+					<row><label value="" />
+						<captcha id="capAthenticate" length="4" />
+					</row>
+					<row>
+						<label value="请输入验证码" />
+						<textbox id="capInput" width="100%"/>
+					</row>
+					<row>
+						<label/>
+						<div>
+						<button label="提交" id="btnAuthenticate" disabled="true"/>
+						<button label="注册" id="btnRegister" />
+						</div>
+					</row>
+				</rows>
+			</grid>
+	
+	</window>
+</zk>

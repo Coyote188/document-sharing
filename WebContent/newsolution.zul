@@ -1,0 +1,26 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<!--<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>-->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./newSolutionWindow"?>
+<zk>
+<window id="newSolutionWindow" mode="modal" closable="true"
+ title="解决方案描述" width="350px" border="normal" apply="${createNewSolutionControl }">
+<grid>
+		<columns>
+			<column label="" width="30%" align="center"/>
+			<column label="" width="70%" align="center"/>
+		</columns>
+		<rows>
+			<row>
+				<label value="描述 ：" />
+					<textbox width="90%" height="150px" multiline="true" value="@{newSolutionWindow$composer.solution.note }"/>
+			</row>
+			<row>
+				<label value="" />
+				<button label="上传文档" id="btnUploadDocs" />
+			</row>
+		</rows>
+		
+	</grid>
+</window>
+</zk>

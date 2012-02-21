@@ -1,0 +1,27 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./exchangeWindow"?>
+
+<zk>
+<window id="exchangeWindow" closable="true" title="提现" width="300px" apply="${exchangeControl }">
+	<grid>
+		<rows>
+			<row>
+				<div>
+				<space width="5%"/>
+					<label value="请输入要兑换的积分：最小100" />
+				<space width="5%"/>
+					<doublebox value="@{exchangeWindow$composer.point }" />
+					<label value=" 分"/>
+				</div>
+			</row>
+			<row>
+				<div align="center">
+					<button label="提现" id="btnExchangeSubmit"/>
+				</div>
+			</row>
+		</rows>
+	</grid>
+
+</window>
+</zk>

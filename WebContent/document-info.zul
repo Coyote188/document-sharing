@@ -1,0 +1,64 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmFillDocumentInfo"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<zk>	
+	<window title="文档信息" border="normal" id="frmFillDocumentInfo" 
+		apply="${documentInfoEditController}" width="400px">
+		<grid>
+			<columns>
+				<column width="80px"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="标  题 ：" />
+					<textbox id="documentTitle"
+						value="@{ frmFillDocumentInfo$composer.document.title}"
+						width="99%" constraint="no empty:不能为空" />
+				</row>
+				<row>
+					<label value="格  式 ：" />
+					<label
+						value="@{ frmFillDocumentInfo$composer.document.format}" />
+				</row>
+				<row>
+					<label value="大  小 ：" />
+					<label
+						value="@{ frmFillDocumentInfo$composer.document.size}" />
+				</row>
+				<row>
+					<label value="目  录 ：" />
+					<bandbox id="txtSelectedDirectory" width="100%" constraint="no empty:不能为空" readonly="true">
+						<bandpopup id="bandPopupDirectory" fulfill="=/documentDirectoryUi.zul" width="250px" height="200px"/>
+					</bandbox >
+				</row>
+				<row>
+					<label value="类  型 ：" />
+					<bandbox id="txtSelectedType" width="100%" constraint="no empty:不能为空" readonly="true">
+						<bandpopup id="bandPopupType" fulfill="=/document-type.zul" width="250px" height="200px"/>
+					</bandbox>
+				</row>
+				<row>
+					<label value="标  签 ：" />
+					<textbox
+						value="@{ frmFillDocumentInfo$composer.document.tags}"
+						width="100%" />
+				</row>
+				<row>
+					<label value="积  分 ：" />
+					<decimalbox id="documentCash"
+						value="@{ frmFillDocumentInfo$composer.document.downloadCash}"
+						width="100%" constraint="no negative,no empty:不能是负数,不能为空"/>
+				</row>
+				<row>
+					<label value="简	介 ：" />
+					<textbox
+						value="@{ frmFillDocumentInfo$composer.document.simpleDescription}"
+						multiline="true" width="100%" height="150px" />
+				</row>
+			</rows>
+		</grid>
+		<button id="btnOk" label="OK" />
+		<button id="btnCancel" label="Cancel" />
+	</window>
+</zk>

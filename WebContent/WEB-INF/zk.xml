@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<system-config>
+		<!-- Enable Event Thread -->
+		<disable-event-thread>false</disable-event-thread>
+		<!--				<disable-event-thread>true</disable-event-thread>-->
+		<!--	 start SESSION REPLICATION function -->
+		<!--	  needed for running a zk application in a CLUSTER 
+		<ui-factory-class>
+			org.zkoss.zk.ui.http.SerializableUiFactory
+		</ui-factory-class>-->
+	</system-config>
+
+	<session-config>
+		<timeout-uri>/timeout.zul</timeout-uri>
+		<!--
+			An empty URL can cause the browser to reload the same URL
+			<timeout-uri></timeout-uri>
+		-->
+	</session-config>
+
+	<!-- Optional -->
+	<!--<listener>
+		<description>[Optional] Mointor the statistic</description>
+		<listener-class>org.zkoss.zk.ui.util.Statistic</listener-class>
+	</listener>
+	
+	--><!-- Turn on if you want to ignore the consecutive click events,
+	if it happens too close to the previous one, or the server is still
+	serving the previous click.
+	-->
+	<client-config>
+		<click-filter-delay>390</click-filter-delay>
+	</client-config>
+
+	<!-- Configure the error page -->
+	<!--	<error-page>-->
+	<!--		<exception-type>java.lang.Throwable</exception-type>-->
+	<!--		<location>/error.zul</location>-->
+	<!--	</error-page>-->
+	<!--
+		Configure ZUL to use larger fonts for Chinese characters, and smaller
+		fonts for the rest Locales
+	-->
+	<desktop-config>
+		<disable-default-theme>xul/html</disable-default-theme>
+		<theme-uri>~./zul/css/norm**.css.dsp</theme-uri>
+	</desktop-config>
+	<!--
+		Configure the Hibernate SessionFactory Lifecycle. <listener>
+		<description>Hibernate SessionFactory Lifecycle</description>
+		<listener-class>org.zkoss.zkplus.hibernate.HibernateSessionFactoryListener</listener-class>
+		</listener>
+	-->
+
+	<!--
+		Configure the Hibernate "Open Session In View" Session Lifecycle
+		<listener> <description>Hibernate "Open Session In View" Session
+		Lifecycle</description>
+		<listener-class>org.zkoss.zkplus.hibernate.OpenSessionInViewListener</listener-class>
+		</listener>
+	-->
+
+	<!--
+		Hibernate thread session context handler <listener>
+		<description>Hibernate thread session context handler</description>
+		<listener-class>
+		org.zkoss.zkplus.hibernate.HibernateSessionContextListener
+		</listener-class> </listener>
+	-->
+	<!--
+		即时模式意味着可以使用Execution.createComponent方法立即创建页面，从而马上可以被用户访问。而自动模式会根据包含的类型来选择模式，为ZUL文件选择即时模式，否则选择延期模式。
+	-->
+	<library-property>
+		<name>org.zkoss.zul.include.mode</name>
+		<value>auto</value>
+	</library-property>
+	<!--
+		Listener to make sure servlet thread and ZK event thread got the same
+		ThreadLocal values.
+	-->
+	<listener>
+		<description>ThreadLocal Synchronization Listener
+		</description>
+		<listener-class>org.zkoss.zkplus.util.ThreadLocalListener
+		</listener-class>
+	</listener>
+	<preference>
+		<name>ThreadLocal</name>
+		<value>
+			org.springframework.transaction.support.TransactionSynchronizationManager=resources,synchronizations,currentTransactionName,currentTransactionReadOnly,actualTransactionActive;
+			org.springframework.orm.hibernate3.SessionFactoryUtils=deferredCloseHolder;
+			org.springframework.transaction.interceptor.TransactionAspectSupport=transactionInfoHolder;
+			org.springframework.web.context.request.RequestContextHolder=requestAttributesHolder,inheritableRequestAttributesHolder;
+			org.springframework.security.core.context.ThreadLocalSecurityContextHolderStrategy=contextHolder
+		</value>
+	</preference>
+</zk>

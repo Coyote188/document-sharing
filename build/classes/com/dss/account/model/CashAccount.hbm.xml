@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-17 0:23:53 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="com.dss.account.model.CashAccount" table="CASHACCOUNT" >
+        <id name="cashAccountId" type="java.lang.Long">
+            <column name="CASHACCOUNTID" />
+            <generator class="foreign">
+            	<param name="property">member</param>
+            </generator>
+        </id>
+        <property name="paymentAccountId" type="java.lang.String">
+        	<column name="PAYMENTACCOUNTID"/>
+        </property>
+        <property name="currentPoint" type="double">
+            <column name="CURRENTPOINT" />
+        </property>
+		<one-to-one name="member" class="com.dss.account.model.Member" cascade="none"></one-to-one>    </class>
+</hibernate-mapping>

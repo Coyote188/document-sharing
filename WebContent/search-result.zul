@@ -1,0 +1,28 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./searchResult"?>
+<zk>
+<div id="searchResult" apply="${searchResultController}">
+	<grid id="grdSearchResult" mold="paging"
+		model="@{searchResult$composer.documentList}"  >
+<!--		<rows>-->
+<!--			<row self="@{each=document}">-->
+<!--				<label id="documentPicture" value="preview picture" />-->
+<!--				<vbox>-->
+<!--					<label id="documentTitle"-->
+<!--						value="@{document.title }" />-->
+<!--					<html id="documentDescription"-->
+<!--						content="@{document.simpleDescription}" />-->
+<!--					<hbox>						-->
+<!--						<button id="addToCart" label="Add to cart"-->
+<!--							onClick="" />-->
+<!--						<button id="readOnline" label="read online"-->
+<!--							onClick="" />-->
+<!--					</hbox>-->
+<!--				</vbox>-->
+<!--				<label value="upload picture" />-->
+<!--			</row>-->
+<!--		</rows>-->
+	</grid>
+</div>
+</zk>

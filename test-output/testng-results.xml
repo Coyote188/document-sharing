@@ -1,0 +1,17 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="435" started-at="2010-11-22T18:57:39Z" finished-at="2010-11-22T18:57:40Z">
+    <groups>
+      <group name="integrate.init">
+        <method signature="com.dss.test.integration.HibernateTest.hibernateStartupTest()" name="hibernateStartupTest" class="com.dss.test.integration.HibernateTest"/>
+      </group>
+    </groups>
+    <test name="com.dss.test.integration.HibernateTest" duration-ms="435" started-at="2010-11-22T18:57:39Z" finished-at="2010-11-22T18:57:40Z">
+      <class name="com.dss.test.integration.HibernateTest">
+        <test-method status="PASS" signature="hibernateStartupTest()" name="hibernateStartupTest" duration-ms="95" started-at="2010-11-22T18:57:40Z" finished-at="2010-11-22T18:57:40Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

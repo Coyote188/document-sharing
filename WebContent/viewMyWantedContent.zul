@@ -1,0 +1,54 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./viewMyWantedContentWindow"?>
+
+<zk>
+	<window id="viewMyWantedContentWindow" mode="modal"
+		width="350px" border="normal" closable="true" apply="${viewMyWantedControl }">
+		<grid fixedLayout="true">
+			<rows>
+
+				<row>
+					<label style="padding-left:15px"
+						value="@{arg.wanted.suject }" />
+				</row>
+				<row>
+					<label style="padding-left:15px"
+						value="@{arg.wanted.description }" />
+				</row>
+			</rows>
+		</grid>
+		<grid>
+			<columns>
+				<column width="50%" align="right" />
+				<column width="50%" align="center" />
+			</columns>
+			<rows>
+				<row>
+					<label value="到期时间：" />
+					<label
+						value="@{arg.wanted.closeDate }" />
+				</row>
+				<row>
+					<label value="想要关闭悬赏？" />
+					<button label="关闭悬赏" id="btnCloseTheWanted" />
+				</row>
+			</rows>
+		</grid>
+		<listbox id="solutionItems" rows="6" visible="true"
+			model="@{arg.wantedSolutions }">
+			<listhead>
+				<listheader label="描述" sort="auto" width="210px" />
+				<listheader label="上传时间" sort="auto" width="130"/>
+			</listhead>
+			<listgroup label="解决方案" open="false" visible="true" />
+			<listitem self="@{each=solution }" value="@{solution }" height="50px">
+				<listcell label="@{solution.note }" />
+				<listcell label="@{solution.proposeDate }"/>
+			</listitem>
+			<listgroupfoot label="以上内容由用记提供" />
+		</listbox>
+		<button label="查看他上传的文档" onClick="" />
+
+</window>
+</zk>

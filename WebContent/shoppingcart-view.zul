@@ -1,0 +1,27 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./shoppingCartView"?>
+<zk>
+	<window id="shoppingCartView" title="查看购物车" border="normal"
+		apply="${shoppingCartView}" closable="true" width="500px">
+
+		<grid id="grdDocumentList"
+			model="@{shoppingCartView$composer.documentList }">
+			<columns>
+				<column label="标题" />
+				<column label="大小" />
+				<column label="下载积分" />
+				<column />
+			</columns>
+			<foot>
+				<footer>
+					<label value="需要下载积分：" />
+					<label
+						value="@{shoppingCartView$composer.totalPoint, load-when='grdDocumentList.onRemove'}" />
+					<button id="btnDownload" label="下载" />
+					<!--				<button id="btnClose" label="关闭" />				-->
+				</footer>
+			</foot>
+		</grid>
+	</window>
+</zk>

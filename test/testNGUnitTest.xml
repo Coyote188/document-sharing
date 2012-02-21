@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" parallel="false">
+	<test name="unit test">
+		<groups>
+			<run>
+				<include name="unit.*" />
+				<exclude name="broken.*" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.dss.test.unit.*" />
+		</packages>
+	</test>
+</suite>

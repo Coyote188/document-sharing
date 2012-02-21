@@ -1,0 +1,27 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./fillWindow"?>
+
+<zk>
+<window id="fillWindow" closable="true" title="充值" border="none" width="300px" apply="${fillControl }">
+	<grid>
+		<rows>
+			<row>
+				<div>
+				<space width="5%"/>
+					<label value="请输入要充值的金额：" />
+				<space width="5%"/>
+					<doublebox value="@{fillWindow$composer.money }" />
+					<label value="元"/>
+				</div>
+			</row>
+			<row>
+				<div align="center">
+					<button label="充值" id="btnFillSubmit"/>
+				</div>
+			</row>
+		</rows>
+	</grid>
+
+</window>
+</zk>

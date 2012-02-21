@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-12 10:30:03 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="com.dss.wanted.model.Wanted" table="WANTED">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+<!--        <many-to-one name="wantedRepository" class="com.dss.wanted.repository.WantedRepository" fetch="join">-->
+<!--            <column name="WANTEDREPOSITORY" />-->
+<!--        </many-to-one>-->
+        <property name="closeDate" type="java.util.Date">
+            <column name="CLOSEDATE" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="openDate" type="java.util.Date">
+            <column name="OPENDATE" />
+        </property>
+        <property name="suject" type="java.lang.String">
+            <column name="SUJECT" />
+        </property>
+        <property name="status">
+            <column name="STATUS" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="type">12</param>
+                <param name="enumClass">com.dss.wanted.bean.WantedStatus</param>
+            </type>
+        </property>
+<!--        <many-to-one name="documentType" class="com.dss.document.bean.DocumentTypeBean" fetch="join">-->
+<!--            <column name="DOCUMENTTYPE" />-->
+<!--        </many-to-one>-->
+        <many-to-one name="poster" class="com.dss.account.model.Member" fetch="join">
+            <column name="POSTER" />
+        </many-to-one>
+        <list name="proposedSolutions" inverse="true" table="WANTED" lazy="true" >
+            <key>
+                <column name="WANTEDID" />
+            </key>
+            <list-index> </list-index>
+            <one-to-many  class="com.dss.wanted.model.Solution"  />
+        </list>
+    </class>
+</hibernate-mapping>

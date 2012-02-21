@@ -1,0 +1,15 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./recentlyUploadDocument"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<zk>
+	<window border="normal" width="100%" title="最新上传文档">
+			<toolbar id="recentlyUploadDocument"
+				apply="${recentlyUploadDocumentControl}" width="100%">
+				<!--<div >	
+					<image id="documentImage" width="150pxpx" height="300px" content="@{document.previewPicture }"/>
+					<label value="@{document.title }" />
+					</div>
+				-->
+			</toolbar>
+	</window>
+</zk>

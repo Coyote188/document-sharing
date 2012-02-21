@@ -1,0 +1,44 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./manageUploadedDocument"?>
+<zk>
+	<div id="manageUploadedDocument"
+		apply="${uploadedDocumentController}">
+		<hbox>
+			<vbox>
+				<toolbar align="end">
+					<toolbarbutton id="btnAdd" label="add" />
+					<toolbarbutton id="btnEdit" label="edit" />
+					<toolbarbutton id="btnRemove" label="remove" />
+				</toolbar>
+				<div fulfill="=/documentDirectoryUi.zul" />
+			</vbox>
+			<vbox>
+				<grid id="grdViewDocument"
+					model="@{manageUploadedDocument$composer.documentList}">
+					<columns>
+						<column label="title"></column>
+						<column label="cash"></column>
+						<column label="upload date"></column>
+						<column label="size"></column>
+						<column label="edit"></column>
+					</columns>
+					<rows>
+						<row self="@{each=document}">
+							<label value="@{document.title}"></label>
+							<label value="@{document.downloadCash}"></label>
+							<label value="@{document.uploadDate}"></label>
+							<label value="@{document.size}"></label>
+							<toolbarbutton label="edit">
+								<custom-attributes document="@{document}"/>
+								<attribute name="onClick">
+    Events.sendEvent(new Event("onEditDocument", grdViewDocument, self.getAttribute("document")));
+</attribute>
+							</toolbarbutton>
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+		</hbox>
+	</div>
+</zk>

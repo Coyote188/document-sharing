@@ -1,0 +1,34 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./mainToolbar"?>
+<zk>
+
+	<!--	<style src="/css/search.css" />-->
+	<toolbar id="mainToolbar" apply="${mainToolbarControl}">
+		<bandbox id="searchInput" sclass="searchTextBox">
+			<bandpopup>
+				<vbox>
+					<label value="搜索选项：" />
+					<radiogroup id="btnSearchOptions">
+						<radio id="btnSearchByTitle" checked="true"
+							label="标题" />
+						<radio id="btnSearchByTags" label="标签" />
+						<radio id="btnSearchByDescription" label="简介" />
+						<!--						<radio label="@{each.name}"-->
+						<!--							forEach="@{mainToolbar$comper.searchOptions}">-->
+						<!--							<custom-attributes searcher="@{each}" />-->
+						<!--							<attribute name="onCheck">-->
+						<!--    Events.sendEvent(new Event("onChangeSearchOption", self, self.getAttribute("searcher")));-->
+						<!--							</attribute>-->
+						<!--						</radio>-->
+					</radiogroup>
+				</vbox>
+			</bandpopup>
+		</bandbox>
+
+		<toolbarbutton id="btnSearch" label="搜索" />
+		<toolbarbutton id="btnUpload" label="上传" />
+		<toolbarbutton id="btnViewCart" label="购物车" />
+	</toolbar>
+	<!--</div>-->
+</zk>

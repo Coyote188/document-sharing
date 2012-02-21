@@ -1,0 +1,78 @@
+<?page id="index" title="E-Bookstore" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver" ?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmIndex" ?>
+
+<zk>
+	<div align="center" id="frmIndex" apply="${pageFlow}">
+		<borderlayout width="1024px" height="864px">
+			<west width="10%" border="none">
+				<borderlayout>
+					<north height="20%" border="none">
+						<!--				<div style="background:black ;height:100%" />-->
+					</north>
+					<east title="工具" collapsible="true" border="none"
+						fulfill="=/index/left-toolbar.zul">
+						<!--						<include id="leftHolder" src="/index/left-toolbar.zul" />-->
+					</east>
+					<south border="none" height="20%">
+						<!--				<div style="background:black ;height:100%" />-->
+					</south>
+				</borderlayout>
+			</west>
+			<center border="none">
+				<borderlayout>
+					<north border="none" height="10%">
+						<borderlayout>
+							<west width="20%" border="none">
+								<div style="height:100%">
+									<image src="/img/zk-logo2.gif"
+										height="100%" width="100%" />
+								</div>
+							</west>
+							<center border="none">
+								<borderlayout>
+									<north height="15%" border="none">
+										<!--								<div style="background:black ;height:100%" />-->
+									</north>
+									<center border="none"
+										fulfill="=/index/support-toolbar.zul">
+										<!--								<div style="background:#FF2422 ;height:100%" />-->
+										<!--										<include-->
+										<!--											src="/index/support-toolbar.zul" />-->
+									</center>
+									<south border="none"
+										fulfill="=/index/main-toolbar.zul">
+										<!--								<div style="background:#49F1FA ;height:100%" />-->
+										<!--										<include-->
+										<!--											src="/index/main-toolbar.zul" />-->
+									</south>
+								</borderlayout>
+							</center>
+						</borderlayout>
+					</north>
+					<center border="none">
+						<borderlayout>
+							<north border="none">
+								<!--							fulfill="=/index/history-toolbar.zul">-->
+								<!--						<div style="background:#FFC832 ;height:100%" />-->
+<!--																<include-->
+<!--																	src="/index/history-toolbar.zul" />-->
+							</north>
+							<center border="none" fulfill="=/index/main-view.zul">
+								<!--						<div style="background:#A59BFE ;height:100%" />-->
+								
+<!--									<include id="mainHolder" src="/index/main-view.zul" />-->
+							</center>
+						</borderlayout>
+					</center>
+					<south border="none" height="2%">
+						<div style="height:100%; text-align:center;">
+							Copyright © 2010 Document Sharing System.
+							All rights reserved.
+						</div>
+					</south>
+				</borderlayout>
+			</center>
+		</borderlayout>
+	</div>
+</zk>

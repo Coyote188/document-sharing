@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-23 10:25:36 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="com.dss.storage.model.DocumentDirectory" table="DOCUMENTDIRECTORY" lazy="false">
+        <id name="id" type="long" >
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <many-to-one name="parent" class="com.dss.storage.model.DocumentDirectory" column="PARENT"  access="field" />
+         
+        <many-to-one name="member" class="com.dss.account.model.Member" column="MEMBER" />
+          
+        <bag name="subDirectory" inverse="true" table="DOCUMENTDIRECTORY" cascade="save-update" access="field">
+            <key column="parent"/>           
+            <one-to-many class="com.dss.storage.model.DocumentDirectory" />
+        </bag>
+    </class>
+</hibernate-mapping>

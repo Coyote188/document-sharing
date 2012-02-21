@@ -1,0 +1,32 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="viewSolutionWindow" title="查看由admin提供的文档" border="normal" width="400px">
+	<grid id="grdSolList">
+		<rows>
+			<row>
+				<vbox>
+					<hbox align="center">
+						<label value="描述 :" multiline="false"/>
+						<label 
+							value="对解决方案的描述对解决方案的描述对解决方案的描述对解决方案的描述对解决方案的描述"
+							multiline="true"
+							width="300px" />
+					</hbox>
+					<hbox align="center">
+						<label value="上传时间 :" style="color:blue" width="15%" />
+						<label value="2010.1.1 11:11" width="80%" />
+					</hbox>
+				</vbox>
+			</row>
+			<row>
+				<hbox align="center">
+					<label value="docname"/>
+					<label value="30'" />
+					<button label="view"/>
+				</hbox>
+			</row>
+		</rows>
+	</grid>
+	<div align="center"><button id="btnAccept" label="accept" onClick="" /></div>
+</window>
+</zk>

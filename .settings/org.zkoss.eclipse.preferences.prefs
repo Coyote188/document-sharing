@@ -1,0 +1,5 @@
+#Mon Nov 29 14:23:19 CST 2010
+eclipse.preferences.version=1
+visualeditor.custom_web_content_path=/document-sharing/WebContent
+visualeditor.custom_zk_package=zk-bin-3.6.3
+visualeditor.is_use_zks_lib=false

@@ -1,0 +1,36 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./createNewWanted"?>
+<zk >
+	<window closable="true" id="createNewWanted" title="New Wanted" border="normal"
+		width="465" apply="${createNewWantedControl }">
+
+		<grid>
+			<columns>
+				<column width="100" />
+				<column width="300" />
+				<column width="50" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Subject :" width="10" />
+					<textbox id="subject" width="200px"
+						value="@{createNewWanted$composer.wanted.suject }" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Description :" width="100px" />
+					<textbox id="description" height="200px"
+						width="250px" multiline="true"
+						value="@{createNewWanted$composer.wanted.description }" />
+					<label value="" />
+				</row>
+				<row>
+					<space />
+					<button label="submit" id="btnSubmit" />
+					<button label="reset" onClick="" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

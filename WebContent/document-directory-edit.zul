@@ -1,0 +1,28 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./editDocumentDirectory"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<zk>
+	<window id="editDocumentDirectory" title="编辑目录" border="normal"
+		apply="${documentDirectoryEditControl}">
+		<hbox>
+			<vbox width="80px">
+				<label value="根目录：" />
+				<label value="名    称：" />
+			</vbox>
+			<vbox>
+				<bandbox id="txtSelectedDirectory" width="100%" constraint="@{editDocumentDirectory$composer.rootConstraint}" readonly="true">
+					<bandpopup id="bandPopupDirectory"
+						fulfill="=/documentDirectoryUi.zul" width="250px" height="200px" />
+				</bandbox>
+				<label id="txtError" />
+				<textbox id="txtName" width="100%"
+					value="@{editDocumentDirectory$composer.directory.name}"
+					constraint="no empty:不能为空" />
+				<div>
+					<button id="btnOk" label="确定" />
+					<button id="btnCancel" label="取消" />
+				</div>
+			</vbox>
+		</hbox>
+	</window>
+</zk>

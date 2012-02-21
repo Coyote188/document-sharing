@@ -1,0 +1,25 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./documentDirectoryUi"?>
+<zk>
+	<div id="documentDirectoryUi"
+		apply="${documentDirectoryController}">
+
+		<listbox id="rootDirectoryList">
+			<listitem>
+				<listcell label="@{documentDirectoryUi$composer.root.name }">
+<!--					<label id="txtNewDir"-->
+<!--						value="@{documentDirectoryUi$composer.root.name }" />	-->
+				</listcell>
+			</listitem>
+		</listbox>
+
+		<tree id="directorySelection">
+			<!--				<treecols>-->
+			<!--					<treecol label="Name" />-->
+			<!--					<treecol label="add" />-->
+			<!--					<treecol label="remove" />-->
+			<!--				</treecols>-->
+		</tree>
+	</div>
+</zk>

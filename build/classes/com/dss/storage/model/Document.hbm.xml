@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-23 22:51:52 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+ <class name="com.dss.storage.model.Document" table="DOCUMENT"  lazy="false">
+  <id name="id" type="long">
+   <column name="ID"/>
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="name" type="java.lang.String">
+   <column name="NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="size" type="double">
+   <column name="SIZE"/>
+  </property>
+  <property generated="never" lazy="false" name="simpleDescription" type="java.lang.String">
+   <column name="SIMPLEDESCRIPTION"/>
+  </property>
+  <property generated="never" lazy="false" name="tags" type="java.lang.String">
+   <column name="TAGS"/>
+  </property>
+  <property generated="never" lazy="false" name="title" type="java.lang.String">
+   <column name="TITLE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="downloadCash" type="double">
+   <column name="DOWNLOADCASH" not-null="true"/>
+  </property>
+  <property access="field" generated="never" lazy="false"
+   name="contentMd5" type="java.lang.String">
+   <column name="CONTENTMD5"/>
+  </property>
+  <property access="field" generated="never" lazy="false"
+   name="prePicMd5" type="java.lang.String">
+   <column name="PREVIEWPICTUREMD5"/>
+  </property>
+  <property generated="never" lazy="false" name="format">
+   <column name="FORMAT"/>
+   <type name="org.hibernate.type.EnumType">
+    <param name="type">12</param>
+    <param name="enumClass">com.dss.storage.bean.DocumentFormat</param>
+   </type>
+  </property>
+  <property generated="never" lazy="false" name="uploadDate" type="java.util.Date">
+   <column name="UPLOADDATE"/>
+  </property>
+  <many-to-one class="com.dss.storage.model.DocumentType" name="type" not-null="true">
+   <column name="TYPE"/>
+  </many-to-one>
+  <many-to-one class="com.dss.storage.model.DocumentDirectory"
+   name="directory" not-null="true">
+   <column name="DIRECTORY"/>
+  </many-to-one>
+  <many-to-one class="com.dss.account.model.Member" name="uploader" not-null="true">
+   <column name="UPLOADER"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

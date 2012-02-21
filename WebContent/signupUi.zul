@@ -1,0 +1,58 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./signupUi"?>
+
+<zk>
+	<window id="signupUi" closable="true" title="注册"
+		border="normal" width="400px" apply="${createNewMemberControl }">
+
+		<custom-attributes scope="component"
+			member="@{signupUi$composer.member}" />
+		<grid>
+			<columns>
+				<column width="100px" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<label value="用户名：" />
+					<textbox id="username"
+						value="@{signupUi$composer.member.username }" width="100%"/>
+				</row>
+				<row>
+					<label value="称   号：" />
+					<textbox id="calledName"
+						value="@{signupUi$composer.profile.calledName}" width="100%"/>
+				</row>
+				<row>
+					<label value="密码 ：" />
+					<textbox id="password" type="password"
+						value="@{signupUi$composer.member.password }" width="100%"/>
+				</row>
+				<row>
+					<label value="密码确认 ：" />
+					<textbox id="password2" type="password" width="100%"/>
+				</row>
+				<row>
+					<label value="" />
+					<captcha id="capAthenticate" />
+				</row>
+				<row>
+					<label value="请输入验证码：" />
+					<textbox id="captchaInputBox" width="100%"/>
+				</row>
+			</rows>
+		</grid>
+		<grid>
+			<columns>
+				<column align="center" />
+			</columns>
+			<rows>
+				<row>
+					<button label="提交" id="memberSubmit"
+						disabled="true" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

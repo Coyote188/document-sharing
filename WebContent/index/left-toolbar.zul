@@ -1,0 +1,18 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./leftToolbar"?>
+
+<zk>
+	<!--	<style src="/css/float-toolbar.css"></style>-->
+	<toolbar id="leftToolbar" align="center" orient="vertical"
+		sclass="showToolbar" apply="${functionToolbarControl}">
+		<toolbarbutton id="btnBrowseDocument" label="浏览文档" />
+		<toolbarbutton id="btnMyWanted" label="我的悬赏" />
+		<toolbarbutton id="btnMyDocument" label="我的文档" />
+		<toolbarbutton id="btnCreateWanted" label="创建悬赏" />
+		<toolbarbutton id="btnFillAccount" label="充值积分" />
+		<toolbarbutton id="btnExchangeCash" label="提现积分" />		
+		<toolbarbutton id="btnMyInfo" label="我的信息" />
+	</toolbar>
+
+</zk>

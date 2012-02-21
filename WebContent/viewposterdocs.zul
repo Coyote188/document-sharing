@@ -1,0 +1,9 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./posterDocsWindow"?>
+<zk>
+	<window id="posterDocsWindow" title="new page title" border="normal" width="450px">
+		<grid id="grdPosterDocs" mold="@{posterDocsWindow$composer.* }">
+		</grid>
+	</window>
+</zk>

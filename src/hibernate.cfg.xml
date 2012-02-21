@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <!--			<mapping class="com.dss.model.storage.model.DocumentContent" />-->
+  <mapping resource="com/dss/storage/model/Document.hbm.xml"/>
+  <mapping resource="com/dss/storage/model/DocumentDirectory.hbm.xml"/>
+  <mapping resource="com/dss/storage/model/DocumentType.hbm.xml"/>
+  <mapping resource="com/dss/wanted/model/Solution.hbm.xml"/>
+  <mapping resource="com/dss/wanted/model/Wanted.hbm.xml"/>
+  <mapping resource="com/dss/account/model/Member.hbm.xml"/>
+  <mapping resource="com/dss/account/model/Profile.hbm.xml"/>
+  <mapping resource="com/dss/account/model/CashAccount.hbm.xml"/>
+  <mapping resource="com/dss/account/model/PaymentProvider.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

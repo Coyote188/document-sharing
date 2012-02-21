@@ -1,0 +1,23 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmManageDocument"?>
+<zk>
+	<window id="frmManageDocument" title="new page title"
+		border="normal" apply="${manageDocumentController}" >
+		<hbox>
+			<div id="directoryHolder" width="300px">
+				
+			</div>
+			<grid id="grdDocumentDirectory"
+				model="@{frmManageDocument$composer.userDocumentList,
+				 load-when='directorySelection.onSelect'}" >
+				<columns>
+					<column>标题</column>
+					<column>大小</column>
+					<column>积分</column>
+					<column></column>
+				</columns>
+			</grid>
+		</hbox>
+	</window>
+</zk>

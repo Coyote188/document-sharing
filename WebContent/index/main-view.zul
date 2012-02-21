@@ -1,0 +1,48 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver" ?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./mainViewHolder" ?>
+<zk>
+	<tabbox id="mainViewHolder" width="100%" height="100%" apply="${mainViewControl}">
+		<tabs>
+			<tab label="home" selected="true" closable="false"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<borderlayout>
+					<north border="none" size="100%">
+						<borderlayout>
+							<west size="75%" border="none"
+								fulfill="=/viewwanteds.zul">
+								<!--					<div style="background:#49FF48 ;height:100%" />-->
+							</west>
+							<center>
+							<div
+									style="background:#FF5FE7 ;height:100%" />
+							</center>
+							<!--<east size="15%" border="none">
+									<div
+									style="background:#5E78FF ;height:100%" />
+							</east>
+							--><south size="50%" border="none" fulfill="=/recently-upload-document.zul">
+<!--								<div-->
+<!--									style="background:#FF2933 ;height:100%" />-->
+							</south>
+						</borderlayout>
+					</north>
+					<!--<east size="30%" border="none">
+						<borderlayout>
+							<north size="50%" border="none">
+							
+							</north>
+							<south size="50%" border="none">
+
+								<div
+									style="background:#FFF764 ;height:100%" />
+							</south>
+						</borderlayout>
+					</east>
+				--></borderlayout>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</zk>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:security="http://www.springframework.org/schema/security"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:zksp="http://www.zkoss.org/2008/zkspring/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+                        http://www.zkoss.org/2008/zkspring/security http://www.zkoss.org/2008/zkspring/security/zkspring-security.xsd">
+
+	<security:global-method-security
+		secured-annotations="enabled">
+		<!--
+			AspectJ pointcut expression that locates our "post" method and
+			applies security that way <protect-pointcut expression="execution(*
+			bigbank.*Service.post*(..))" access="ROLE_TELLER"/>
+		-->
+	</security:global-method-security>
+
+	<security:http auto-config="true" use-expressions="true">
+
+		<security:intercept-url pattern="/**"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/index"
+			access="permitAll" />
+<!--		Use a custom login page-->
+		<security:form-login login-page="/login.zul"
+			authentication-failure-url="/login.zul?login_error=1" />
+
+		<!--
+			Following is list of ZK Spring Security custom filters. They needs to
+			be exactly in the same order as shown below in order to work.
+		-->
+		<security:custom-filter ref="zkDesktopReuseFilter"
+			position="FIRST" />
+		<security:custom-filter ref="zkDisableSessionInvalidateFilter"
+			before="FORM_LOGIN_FILTER" />
+		<security:custom-filter ref="zkEnableSessionInvalidateFilter"
+			before="FILTER_SECURITY_INTERCEPTOR" />
+		<security:custom-filter ref="zkLoginOKFilter"
+			after="FILTER_SECURITY_INTERCEPTOR" />
+		<security:custom-filter ref="zkError403Filter"
+			after="LOGOUT_FILTER" />
+	</security:http>
+
+	<!--
+		Usernames/Passwords are rod/koala dianne/emu scott/wombat peter/opal
+	-->
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:password-encoder hash="md5" />
+			<security:user-service>
+				<security:user name="rod" password="a564de63c2d0da68cf47586ee05984d7"
+					authorities="ROLE_SUPERVISOR, ROLE_USER, ROLE_TELLER" />
+				<security:user name="dianne" password="65d15fe9156f9c4bbffd98085992a44e"
+					authorities="ROLE_USER,ROLE_TELLER" />
+				<security:user name="scott" password="2b58af6dddbd072ed27ffc86725d7d3a"
+					authorities="ROLE_USER" />
+				<security:user name="peter" password="22b5c9accc6e1ba628cedc63a72d57f8"
+					authorities="ROLE_USER" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<!--  Securing ZK events -->
+	<zksp:zk-event login-template-close-delay="5">
+		<zksp:intercept-event event="onClick" path="//**/btn*"
+			access="ROLE_TELLER" />
+		<zksp:intercept-event path="/**"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<!-- Configuring Ajax popup login -->
+		<zksp:form-login login-page="/signinUi.zul" />
+	</zksp:zk-event>
+
+</beans>

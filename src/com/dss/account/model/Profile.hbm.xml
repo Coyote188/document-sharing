@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-10 11:28:39 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="com.dss.account.model.Profile" table="PROFILE" lazy="false">
+        <id name="profileId" type="java.lang.Long" >
+            <column name="PROFILEID" />
+            <generator class="foreign">
+            	<param name="property">member</param>
+            </generator>
+        </id>
+        <property name="birthDate" type="java.util.Date">
+            <column name="BIRTHDATE" />
+        </property>
+        <property name="contactMethods" type="java.lang.String">
+            <column name="CONTACTMETHODS" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="GENDER" />
+        </property>
+        <property name="hobbie" type="java.lang.String">
+            <column name="HOBBIE" />
+        </property>
+        <property name="location" type="java.lang.String">
+            <column name="LOCATION" />
+        </property>
+        <property name="realName" type="java.lang.String">
+            <column name="REALNAME" />
+        </property>
+        <property name="calledName" type="java.lang.String">
+            <column name="CALLEDNAME" />
+        </property>
+        <one-to-one name="member" class="com.dss.account.model.Member" cascade="none"></one-to-one>
+        
+    </class>
+</hibernate-mapping>

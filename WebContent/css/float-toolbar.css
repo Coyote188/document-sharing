@@ -1,0 +1,21 @@
+.showToolbar {
+	
+	padding:0;
+}
+
+.showToolbar div.z-toolbar-body {
+	
+}
+
+.z-toolbar-tabs-body,.z-toolbar-body {
+	font-size: 0;
+}
+
+.showToolbar div.z-toolbarbutton {	
+	width: 100%;
+	background-color: white;
+}
+
+.showToolbar div.z-toolbarbutton-cnt {
+	padding:0;	
+}

@@ -1,0 +1,10 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./typeSelection"?>
+<tree id="typeSelection" apply="${documentTypeController}">
+	<!--				<treecols>-->
+	<!--					<treecol label="Name" />-->
+	<!--					<treecol label="add" />-->
+	<!--					<treecol label="remove" />-->
+	<!--				</treecols>-->
+</tree>

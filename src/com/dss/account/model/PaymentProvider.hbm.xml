@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-10 16:20:40 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="com.dss.account.model.PaymentProvider" table="PAYMENTPROVIDER" lazy="true">
+        <id name="providerId" type="java.lang.Long" >
+            <column name="PROVIDERID" />
+            <generator class="foreign">
+            	<param name="property">cashAccount</param>
+            </generator>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="homePage" type="java.lang.String">
+            <column name="HOMEPAGE" />
+        </property>
+        <one-to-one name="cashAccount" class="com.dss.account.model.CashAccount" cascade="none"/>
+    </class>
+</hibernate-mapping>

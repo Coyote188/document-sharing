@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:zkspc="http://www.zkoss.org/2008/zkspring/core" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.zkoss.org/2008/zkspring/core http://www.zkoss.org/2008/zkspring/core/zkspring-core.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<import resource="hibernate-spring.xml" />
+	<import resource="mongo-spring.xml" />
+<!--	<import resource="zk-spring-security.xml"/>-->
+	<!--	<import resource="jbpm4-spring.xml" />-->
+
+	<!-- Configure annotated beans -->
+		<context:annotation-config />
+		<context:component-scan base-package="com.dss"/>
+	<!--
+		实例化@Controller类时，Spring会自动把关联的@Service（此@Service已做了@Transaction事务注解）类实例化，此时事务并未生效，导致@Transaction注解无效，事务未被注册.
+		因此需要把@Controller和其它的@Service,@Components,@Reposity等分开实例化，在事务生效后，并且其它组件都实例化完成后，@Controller最后实例化.
+	-->
+	<!-- 扫描com.dss及子包，自动实例化带@注释的实例，这里排除@Controller -->
+	<!--<context:component-scan base-package="com.dss">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>-->
+	<!--
+		扫描com.dss及子包，自动实例化带@controller注释的实例,
+		由于实例化controller时会对controller关联的Service类一同实例化，所以这里需要排除@Service
+	-->
+	<!--<context:component-scan base-package="com.dss">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>-->
+	<context:property-placeholder location="classpath:/db-dev.properties" />
+
+	<!-- domain class dependency injection enable -->
+	<context:spring-configured />
+	<context:load-time-weaver />
+
+	<!--
+		Config ZK Spring Core to use enhanced features such as application
+		scope, desktop scope, page scope, idspace scope, execution scope, etc.
+	-->
+	<zkspc:zk-config />
+
+
+	<!--  Transaction Management-->
+	<tx:annotation-driven />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="memberService" class="com.dss.account.service.impl.MemberServiceImpl">
+		<property name="memberRepository">
+			<ref bean="memberRepository" />
+		</property>
+	</bean>
+	<bean id="memberRepository" class="com.dss.account.repository.impl.MemberRepositoryImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="wantedRepository" class="com.dss.wanted.repository.impl.WantedRepositoryImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="wantedService" class="com.dss.wanted.service.impl.WantedServiceImpl">
+		<property name="wantedRepository">
+			<ref bean="wantedRepository" />
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,8 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmViewOnline"?>
+
+<window id="frmViewOnline" title="查看文档" border="normal" apply="${viewDocumentController}" width="860px" height="500px">
+	<grid id="grdViewOnline" mold="paging" pageSize="1"	model="@{frmViewOnline$composer.pageList}" vflex="true">
+	</grid>
+</window>

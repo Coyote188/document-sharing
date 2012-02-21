@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="5" configfailurepolicy="skip" verbose="1" name="Failed suite [Default suite]" skipfailedinvocationcounts="false" parallel="false" annotations="JDK" data-provider-thread-count="10">
+  <test verbose="1" name="com.dss.test.integration.EnvironmentTest(failed)" junit="false" parallel="false" annotations="JDK">
+    <classes>
+      <class name="com.dss.test.integration.EnvironmentTest">
+        <methods>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springStartUp"/>
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

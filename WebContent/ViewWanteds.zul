@@ -1,0 +1,26 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./viewWantedWindow"?>
+<zk>
+	<window id="viewWantedWindow" border="none" width="305"
+		apply="${viewWantedControl }">
+		<listbox id="wantedItems" width="300px" rows="10"
+			model="@{viewWantedWindow$composer.wanteds }">
+			<listhead>
+				<listheader label="Wanted" />
+				<listheader label="Wanted Content" />
+			</listhead>
+			<listitem self="@{each=wanted }" value="@{wanted }">
+				<listcell label="@{wanted.suject }"></listcell>
+				<listcell label="@{wanted.description }"></listcell>
+			</listitem>
+		</listbox>
+		<div align="center">
+			<button label="查看" id="getSelectWantedItem" />
+			<space width="15" />
+			<button label="我要创建悬赏" id="btnNewWantedWindow" />
+			<space width="15" />
+			<button label="查看我的悬赏" id="btnSearchMyWanted" />
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-12 10:30:03 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+ <class name="com.dss.wanted.model.Solution" table="SOLUTION">
+  <id name="id" type="java.lang.Long">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="note" type="java.lang.String">
+   <column name="NOTE"/>
+  </property>
+  <property generated="never" lazy="false" name="proposeDate" type="java.util.Date">
+   <column name="PROPOSEDATE"/>
+  </property>
+  <property generated="never" lazy="false" name="status">
+   <column name="STATUS"/>
+   <type name="org.hibernate.type.EnumType">
+    <param name="type">12</param>
+    <param name="enumClass">com.dss.wanted.bean.SolutionStatus</param>
+   </type>
+  </property>
+  <many-to-one class="com.dss.account.model.Member" fetch="join" name="proposer">
+   <column name="PROPOSER"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="wantedId" type="java.lang.Long">
+   <column name="WANTEDID"/>
+  </property>
+  <property generated="never" lazy="false" name="documentId" type="java.lang.Long">
+   <column name="DOCUMENTID"/>
+  </property>
+ </class>
+</hibernate-mapping>

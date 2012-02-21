@@ -1,0 +1,109 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./memberProfileAndCashAccountWindow"?>
+
+<zk>
+	<window id="memberProfileAndCashAccountWindow" closable="true"
+		title="会员信息" border="none" width="410px" 
+		apply="${viewProfileControl }">
+		<custom-attributes scope="component" />
+		<zscript>
+	void btnModify() {
+		txtCalledName.setDisabled(false);
+		txtRealName.setDisabled(false);
+		txtLocation.setDisabled(false);
+		txtContactMethods.setDisabled(false);
+		txtHobbie.setDisabled(false);
+		comGender.setDisabled(false);
+		dateBirthDate.setDisabled(false);
+		txtPaymentAccountId.setDisabled(false);
+
+		btnModify.setVisible(false);
+		btnSaveModify.setVisible(true);
+	}
+</zscript>
+		<grid id="memberProfileWindow">
+			<columns>
+				<column width="100px" />
+				<column width="250px" />
+				<column width="50px" />
+			</columns>
+			<rows>
+				<row>
+					<label value="昵称：" />
+					<textbox id="txtCalledName" width="100%" value="@{memberProfileAndCashAccountWindow$composer.profile.calledName }" disabled="true" />
+					<label width="50" />
+				</row>
+				<row>
+					<label value="姓名：" />
+					<textbox id="txtRealName" width="100%" disabled="true" value="@{memberProfileAndCashAccountWindow$composer.profile.realName }" />
+					<label width="50" />
+				</row>
+				<row>
+					<label value="性别：" />
+					<combobox id="comGender" width="100%" disabled="true" value="@{memberProfileAndCashAccountWindow$composer.profile.gender }">
+						<comboitem label="男" />
+						<comboitem label="女" />
+					</combobox>
+					<label value="" width="50px" />
+				</row>
+				<row>
+					<label value="生日：" />
+					<datebox id="dateBirthDate" width="100%" disabled="true" value="@{memberProfileAndCashAccountWindow$composer.profile.birthDate }" />
+					<label value="" width="50" />
+				</row>
+				<row>
+					<label value="住址：" />
+					<textbox id="txtLocation" width="100%" disabled="true" value="@{memberProfileAndCashAccountWindow$composer.profile.location }" />
+					<label value="" width="50" />
+				</row>
+				<row>
+					<label value="联系方式：" />
+					<textbox id="txtContactMethods" width="100%" disabled="true" value="@{memberProfileAndCashAccountWindow$composer.profile.contactMethods }" />
+					<label value="" width="50" />
+				</row>
+				<row>
+					<label value="爱好：" />
+					<textbox id="txtHobbie" width="100%" disabled="true" value="@{memberProfileAndCashAccountWindow$composer.profile.hobbie }" />
+					<label value="" width="50" />
+				</row>
+
+				<row>
+					<label value="" />
+					<div align="center">
+						<button label="修改" id="btnModify" onClick="btnModify()" visible="true" />
+						<button label="保存" id="btnSaveModify" visible="false" />
+					</div>
+				</row>
+
+			</rows>
+		</grid>
+		<grid id="cashAccountWindow">
+			<columns>
+				<column width="100px" />
+				<column width="250px" />
+			</columns>
+			<rows>
+				<group label="查看账户信息？" open="false" />
+				<row>
+					<label value="当前积分：" />
+					<div align="center">
+						<label
+							value="@{memberProfileAndCashAccountWindow$composer.cashAccount.currentPoint }" />
+						<button label="充值" id="btnFill" />
+					</div>
+				</row>
+				<row>
+					<label value="充值银行账户：" />
+					<textbox id="txtPaymentAccountId" width="200px"
+						disabled="true"
+						value="@{memberProfileAndCashAccountWindow$composer.cashAccount.paymentAccountId }" />
+				</row>
+				<!--				<row>-->
+				<!--					<label value="个人主页"/>-->
+				<!--					<textbox id="txtHomePage" width="200px" disabled="true"  value="@{memberProfileAndCashAccountWindow$composer.paymentProvider.homePage }"/>-->
+				<!--				</row>-->
+			</rows>
+		</grid>
+	</window>
+</zk>

@@ -1,0 +1,18 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./myDocListWindow"?>
+<zk>
+	<window id="myDocListWindow" title="管理您的文档" width="600px"
+		border="none" maximizable="true" closable="true" apply="${manageMyDocControl }">
+		<panel border="normal" width="100%" height="100%">
+			<panelchildren>
+				<hbox spacing="0" width="100%" height="100%">
+					<div id="divEditDirectoryList" />
+					<splitter id="s" collapse="before" />
+					<div id="divManageDocList" />
+				</hbox>
+			</panelchildren>
+		</panel>
+
+	</window>
+</zk>
